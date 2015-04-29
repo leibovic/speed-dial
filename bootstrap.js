@@ -23,18 +23,38 @@ function optionsCallback() {
 }
 
 let createDataset = Task.async(function* () {
-  let items = [{
-    url: "http://example.com/first",
-    title: "First Example",
-    description: "This is an example",
-    image_url: "http://lorempixel.com/64/64?id=1"
-  }, 
-  {
-    url: "http://example.com/second",
-    title: "Second Example",
-    description: "This is a second example",
-    image_url: "http://lorempixel.com/64/64?id=2"
-  }];
+  let items = [
+    {
+      url: "http://example.com/1",
+      title: "First Example",
+      image_url: "http://lorempixel.com/64/64?id=1"
+    },
+    {
+      url: "http://example.com/2",
+      title: "Second Example",
+      image_url: "http://lorempixel.com/64/64?id=2"
+    },
+    {
+      url: "http://example.com/3",
+      title: "Third Example",
+      image_url: "http://lorempixel.com/64/64?id=3"
+    },
+    {
+      url: "http://example.com/4",
+      title: "Fourth Example",
+      image_url: "http://lorempixel.com/64/64?id=4"
+    },
+    {
+      url: "http://example.com/5",
+      title: "Fifth Example",
+      image_url: "http://lorempixel.com/64/64?id=5"
+    },
+    {
+      url: "http://example.com/6",
+      title: "Sixth Example",
+      image_url: "http://lorempixel.com/64/64?id=6"
+    },
+  ];
 
   yield HomeProvider.getStorage(DATASET_ID).save(items);
 });
