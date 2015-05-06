@@ -27,32 +27,32 @@ let createDataset = Task.async(function* () {
     {
       url: "http://example.com/1",
       title: "First Example",
-      image_url: "http://lorempixel.com/64/64?id=1"
+      image_url: "chrome://speeddial/content/icons/1.jpg"
     },
     {
       url: "http://example.com/2",
       title: "Second Example",
-      image_url: "http://lorempixel.com/64/64?id=2"
+      image_url: "chrome://speeddial/content/icons/2.jpg"
     },
     {
       url: "http://example.com/3",
       title: "Third Example",
-      image_url: "http://lorempixel.com/64/64?id=3"
+      image_url: "chrome://speeddial/content/icons/3.jpg"
     },
     {
       url: "http://example.com/4",
       title: "Fourth Example",
-      image_url: "http://lorempixel.com/64/64?id=4"
+      image_url: "chrome://speeddial/content/icons/4.jpg"
     },
     {
       url: "http://example.com/5",
       title: "Fifth Example",
-      image_url: "http://lorempixel.com/64/64?id=5"
+      image_url: "chrome://speeddial/content/icons/5.jpg"
     },
     {
       url: "http://example.com/6",
       title: "Sixth Example",
-      image_url: "http://lorempixel.com/64/64?id=6"
+      image_url: "chrome://speeddial/content/icons/6.jpg"
     },
   ];
 
