@@ -18,7 +18,9 @@ function optionsCallback() {
       dataset: DATASET_ID,
       type: Home.panels.View.GRID,
       itemType: Home.panels.Item.ICON,
-    }]
+    }],
+    default: true,
+    position: 3
   };
 }
 
