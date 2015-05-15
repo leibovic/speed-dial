@@ -16,54 +16,13 @@ function optionsCallback() {
     title: "Speed dial",
     views: [{
       dataset: DATASET_ID,
-      type: Home.panels.View.GRID,
-      itemType: Home.panels.Item.ICON,
+      type: Home.panels.View.WEB,
+      url: "https://mozilla.org"
     }],
     default: true,
     position: 3
   };
 }
-
-let createDataset = Task.async(function* () {
-  let items = [
-    {
-      url: "http://example.com/1",
-      title: "First Example",
-      image_url: "chrome://speeddial/content/icons/1.jpg"
-    },
-    {
-      url: "http://example.com/2",
-      title: "Second Example",
-      image_url: "chrome://speeddial/content/icons/2.jpg"
-    },
-    {
-      url: "http://example.com/3",
-      title: "Third Example",
-      image_url: "chrome://speeddial/content/icons/3.jpg"
-    },
-    {
-      url: "http://example.com/4",
-      title: "Fourth Example",
-      image_url: "chrome://speeddial/content/icons/4.jpg"
-    },
-    {
-      url: "http://example.com/5",
-      title: "Fifth Example",
-      image_url: "chrome://speeddial/content/icons/5.jpg"
-    },
-    {
-      url: "http://example.com/6",
-      title: "Sixth Example",
-      image_url: "chrome://speeddial/content/icons/6.jpg"
-    },
-  ];
-
-  yield HomeProvider.getStorage(DATASET_ID).save(items);
-});
-
-let deleteDataset = Task.async(function* () {
-  yield HomeProvider.getStorage(DATASET_ID).deleteAll();
-});
 
 /**
  * bootstrap.js API
@@ -74,14 +33,12 @@ function startup(data, reason) {
 
   if (reason == ADDON_INSTALL || reason == ADDON_ENABLE) {
     Home.panels.install(PANEL_ID);
-    createDataset();
   }
 }
 
 function shutdown(data, reason) {
   if (reason == ADDON_UNINSTALL || reason == ADDON_DISABLE) {
     Home.panels.uninstall(PANEL_ID);
-    deleteDataset();
   }
 
   Home.panels.unregister(PANEL_ID);
