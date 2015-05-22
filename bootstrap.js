@@ -25,38 +25,33 @@ function optionsCallback() {
 }
 
 let createDataset = Task.async(function* () {
-  let items = [
-    {
-      url: "http://example.com/1",
-      title: "First Example",
-      image_url: "chrome://speeddial/content/icons/1.jpg"
-    },
-    {
-      url: "http://example.com/2",
-      title: "Second Example",
-      image_url: "chrome://speeddial/content/icons/2.jpg"
-    },
-    {
-      url: "http://example.com/3",
-      title: "Third Example",
-      image_url: "chrome://speeddial/content/icons/3.jpg"
-    },
-    {
-      url: "http://example.com/4",
-      title: "Fourth Example",
-      image_url: "chrome://speeddial/content/icons/4.jpg"
-    },
-    {
-      url: "http://example.com/5",
-      title: "Fifth Example",
-      image_url: "chrome://speeddial/content/icons/5.jpg"
-    },
-    {
-      url: "http://example.com/6",
-      title: "Sixth Example",
-      image_url: "chrome://speeddial/content/icons/6.jpg"
-    },
+  function getRandomColor() {
+    let letters = '0123456789ABCDEF'.split('');
+    let color = '#';
+    for (let i = 0; i < 6; i++ ) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  let icons = [
+    "http://people.mozilla.org/~mleibovic/icons/sun.png",
+    "http://people.mozilla.org/~mleibovic/icons/waves.png",
+    "http://people.mozilla.org/~mleibovic/icons/tram.png"
   ];
+  function getRandomIcon() {
+    return icons[Math.floor(Math.random() * 3)];
+  }
+
+  let items = [];
+  for (let i = 0; i < 18; i++) {
+    items.push({
+      url: "http://example.com/" + i,
+      title:"Example " + i,
+      image_url: getRandomIcon(),
+      bgcolor: getRandomColor()
+    });
+  }
 
   yield HomeProvider.getStorage(DATASET_ID).save(items);
 });
