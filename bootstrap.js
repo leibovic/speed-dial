@@ -43,14 +43,33 @@ let createDataset = Task.async(function* () {
     return icons[Math.floor(Math.random() * 3)];
   }
 
+  let backgrounds = [
+    "http://fennec.androidzeitgeist.com/speeddial/background01.png",
+    "http://fennec.androidzeitgeist.com/speeddial/background02.png",
+    "http://fennec.androidzeitgeist.com/speeddial/background03.png",
+    "http://fennec.androidzeitgeist.com/speeddial/background04.png",
+    "http://fennec.androidzeitgeist.com/speeddial/background05.png"
+  ];
+  function getRandomBackground() {
+    return backgrounds[Math.floor(Math.random() * 5)];
+  }
+
   let items = [];
   for (let i = 0; i < 18; i++) {
-    items.push({
-      url: "http://example.com/" + i,
-      title:"Example " + i,
-      image_url: getRandomIcon(),
-      bgcolor: getRandomColor()
-    });
+    let item = {
+        url: "http://example.com/" + i,
+        title: "Example " + i,
+        image_url: getRandomIcon(),
+    };
+
+    let showBackground = Math.random() >= 0.7;
+    if (showBackground) {
+        item.background_url = getRandomBackground();
+    } else {
+        item.bgcolor = getRandomColor();
+    }
+
+    items.push(item);
   }
 
   yield HomeProvider.getStorage(DATASET_ID).save(items);
