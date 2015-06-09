@@ -58,7 +58,6 @@ let createDataset = Task.async(function* () {
   for (let i = 0; i < 18; i++) {
     let item = {
         url: "http://example.com/" + i,
-        title: "Example " + i,
         image_url: getRandomIcon(),
     };
 
@@ -67,6 +66,11 @@ let createDataset = Task.async(function* () {
         item.background_url = getRandomBackground();
     } else {
         item.background_color = getRandomColor();
+    }
+
+    let showTitle = Math.random() >= 0.2;
+    if (showTitle) {
+        item.title = "Example " + i;
     }
 
     items.push(item);
