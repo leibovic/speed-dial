@@ -8,8 +8,8 @@ Cu.import("resource://gre/modules/Services.jsm");
 Cu.import("resource://gre/modules/Task.jsm");
 
 // Make these IDs unique, preferably tied to a domain that you own.
-const PANEL_ID = "speed.dial@margaretleibovic.com";
-const DATASET_ID = "speed.dial@margaretleibovic.com";
+const PANEL_ID = "speed.dial@androidzeitgeist.com";
+const DATASET_ID = "speed.dial@androidzeitgeist.com";
 
 function optionsCallback() {
   return {
