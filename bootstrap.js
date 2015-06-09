@@ -66,7 +66,7 @@ let createDataset = Task.async(function* () {
     if (showBackground) {
         item.background_url = getRandomBackground();
     } else {
-        item.bgcolor = getRandomColor();
+        item.background_color = getRandomColor();
     }
 
     items.push(item);
