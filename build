@@ -22,6 +22,6 @@ zip -r $XPI bootstrap.js \
 adb push "$XPI" /sdcard/"$XPI" && \
 adb shell am start -a android.intent.action.VIEW \
                    -c android.intent.category.DEFAULT \
-                   -d file:///mnt/sdcard/"$XPI" \
+                   -d file:///sdcard/"$XPI" \
                    -n $ANDROID_APP_ID/.App && \
 echo Pushed $XPI to $ANDROID_APP_ID
