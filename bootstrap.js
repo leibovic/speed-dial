@@ -1,3 +1,4 @@
+
 "use strict";
 
 const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
@@ -18,6 +19,10 @@ function optionsCallback() {
       dataset: DATASET_ID,
       type: Home.panels.View.GRID,
       itemType: Home.panels.Item.ICON,
+      header: {
+          image_url: "http://fennec.androidzeitgeist.com/speeddial/header.png",
+          url: "http://www.mozilla.org"
+      }
     }],
     default: true,
     position: 3
