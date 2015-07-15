@@ -1,3 +1,4 @@
+
 "use strict";
 
 const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
@@ -18,6 +19,10 @@ function optionsCallback() {
       dataset: DATASET_ID,
       type: Home.panels.View.GRID,
       itemType: Home.panels.Item.ICON,
+      header: {
+          image_url: "http://fennec.androidzeitgeist.com/speeddial/header.png",
+          url: "http://www.mozilla.org"
+      }
     }],
     default: true,
     position: 3
@@ -43,14 +48,37 @@ let createDataset = Task.async(function* () {
     return icons[Math.floor(Math.random() * 3)];
   }
 
+  let backgrounds = [
+    "http://fennec.androidzeitgeist.com/speeddial/background01.png",
+    "http://fennec.androidzeitgeist.com/speeddial/background02.png",
+    "http://fennec.androidzeitgeist.com/speeddial/background03.png",
+    "http://fennec.androidzeitgeist.com/speeddial/background04.png",
+    "http://fennec.androidzeitgeist.com/speeddial/background05.png"
+  ];
+  function getRandomBackground() {
+    return backgrounds[Math.floor(Math.random() * 5)];
+  }
+
   let items = [];
   for (let i = 0; i < 18; i++) {
-    items.push({
-      url: "http://example.com/" + i,
-      title:"Example " + i,
-      image_url: getRandomIcon(),
-      bgcolor: getRandomColor()
-    });
+    let item = {
+        url: "http://example.com/" + i,
+        image_url: getRandomIcon(),
+    };
+
+    let showBackground = Math.random() >= 0.7;
+    if (showBackground) {
+        item.background_url = getRandomBackground();
+    } else {
+        item.background_color = getRandomColor();
+    }
+
+    let showTitle = Math.random() >= 0.2;
+    if (showTitle) {
+        item.title = "Example " + i;
+    }
+
+    items.push(item);
   }
 
   yield HomeProvider.getStorage(DATASET_ID).save(items);
